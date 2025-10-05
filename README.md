@@ -14,7 +14,6 @@ O objetivo desta atividade é demonstrar integração com APIs REST em um app Co
 - `app/src/main/java/com/fatec/brasilapi/ui/cep/CepScreen.kt` — UI em Jetpack Compose. Campo de entrada, botão Buscar e AlertDialog para exibir o resultado.
 - `app/src/main/java/com/fatec/brasilapi/ui/cep/CepViewModel.kt` — ViewModel que controla o estado da tela, executa a busca e provê um `dismiss()` para fechar o popup.
 - `app/src/main/java/com/fatec/brasilapi/MainActivity.kt` — Activity que inicia a tela `CepScreen` dentro do `BrasilAPITheme`.
-- `app/src/main/java/com/fatec/brasilapi/data/` — (pasta esperada) contém o cliente Ktor e modelos de dados como `CepApi`, `AddressResponse` e `CepResult`.
 
 ## Requisitos
 - Android Studio (recomendado) ou SDK Android + Gradle
