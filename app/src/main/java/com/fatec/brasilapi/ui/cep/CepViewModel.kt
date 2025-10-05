@@ -37,7 +37,7 @@ class CepViewModel: ViewModel() {
         }
     }
 
-    fun limpar() {
-        _state.value = CepScreenState()
+    fun dismiss() {
+        _state.value = _state.value.copy(address = null, errorMessage = null)
     }
 }

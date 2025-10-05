@@ -27,6 +27,7 @@ fun CepScreen(vm: CepViewModel = viewModel()) {
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+        Spacer(Modifier.height(48.dp))
         OutlinedTextField(
             value = state.input,
             onValueChange = vm::onInputChange,
@@ -49,7 +50,26 @@ fun CepScreen(vm: CepViewModel = viewModel()) {
         when {
             state.isLoading -> CircularProgressIndicator()
             state.errorMessage != null -> Text(state.errorMessage ?: "Erro", color = MaterialTheme.colorScheme.error)
-            state.address != null -> AddressCard(state)
+            state.address != null -> {
+                AlertDialog(
+                    onDismissRequest = { vm.dismiss() },
+                    confirmButton = {
+                        TextButton(onClick = { vm.dismiss() }) {
+                            Text("Fechar")
+                        }
+                    },
+                    title = { Text("Endereço") },
+                    text = {
+                        Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                            Text("CEP: ${state.address?.cep}")
+                            Text("Estado: ${state.address?.state}")
+                            Text("Cidade: ${state.address?.city}")
+                            Text("Bairro: ${state.address?.neighborhood ?: "-"}")
+                            Text("Rua: ${state.address?.street ?: "-"}")
+                        }
+                    }
+                )
+            }
             else -> Text("Informe um CEP para consulta")
         }
     }
